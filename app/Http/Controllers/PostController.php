@@ -42,11 +42,9 @@ class PostController extends Controller
             'users' => $users
         ]);
     }
-
-    public function store()
+    
+    public function store(Request $request)
     {
-        //get the request data
-        $request = request();
 
         //validate the data
         $validatedData = $request->validate([
