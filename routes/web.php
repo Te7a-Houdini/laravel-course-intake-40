@@ -28,3 +28,7 @@ Route::post('/posts', 'PostController@store')->name('posts.store');
 
 
 Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
