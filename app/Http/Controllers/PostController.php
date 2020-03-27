@@ -48,6 +48,15 @@ class PostController extends Controller
         //get the request data
         $request = request();
 
+        //validate the data
+        $validatedData = $request->validate([
+            'title' => 'required|min:3',
+            'description' => 'required|min:5',
+        ],[
+            'title.min' => 'Please the title has minimum of 3 chars',
+            'title.required' => 'Please enter the title field'
+        ]);
+
         //store the request data in the db
         Post::create([
             'title' => $request->title,
