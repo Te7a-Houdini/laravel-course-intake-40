@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\User;
-
+use App\Http\Requests\StorePostRequest;
 class PostController extends Controller
 {
     public function index()
@@ -43,18 +43,8 @@ class PostController extends Controller
         ]);
     }
     
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
-
-        //validate the data
-        $validatedData = $request->validate([
-            'title' => 'required|min:3',
-            'description' => 'required|min:5',
-        ],[
-            'title.min' => 'Please the title has minimum of 3 chars',
-            'title.required' => 'Please enter the title field'
-        ]);
-
         //store the request data in the db
         Post::create([
             'title' => $request->title,
