@@ -17,17 +17,21 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/posts', 'PostController@index')->name('posts.index');
+Route::group(['middleware' => 'auth'], function(){
 
-//route for rendering form
-Route::get('/posts/create', 'PostController@create')->name('posts.create');
+    Route::get('/posts', 'PostController@index')->name('posts.index');
 
+    //route for rendering form
+    Route::get('/posts/create', 'PostController@create')->name('posts.create');
+    
+    
+    //route for taking the submition and storing the data in db
+    Route::post('/posts', 'PostController@store')->name('posts.store');
+    
+    
+    Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
+});
 
-//route for taking the submition and storing the data in db
-Route::post('/posts', 'PostController@store')->name('posts.store');
-
-
-Route::get('/posts/{post}', 'PostController@show')->name('posts.show');
 
 Auth::routes();
 

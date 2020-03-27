@@ -42,7 +42,7 @@ class PostController extends Controller
             'users' => $users
         ]);
     }
-    
+
     public function store(StorePostRequest $request)
     {
         //store the request data in the db
