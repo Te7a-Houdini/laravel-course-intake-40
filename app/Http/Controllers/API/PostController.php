@@ -17,12 +17,10 @@ class PostController extends Controller
         );
     }
 
-    public function show()
+    public function show($post)
     {
-        $postId = request()->post;
-
-        $post = Post::find($postId);
-
-        return new PostResource($post);
+        return new PostResource(
+            Post::find($post)
+        );
     }
 }
