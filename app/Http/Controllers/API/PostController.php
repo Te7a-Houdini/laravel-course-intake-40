@@ -16,4 +16,13 @@ class PostController extends Controller
             Post::all()
         );
     }
+
+    public function show()
+    {
+        $postId = request()->post;
+
+        $post = Post::find($postId);
+
+        return new PostResource($post);
+    }
 }

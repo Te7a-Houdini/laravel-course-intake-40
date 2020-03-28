@@ -19,11 +19,12 @@ class PostResource extends JsonResource
             'user_id'=> $this->user_id,
             'title' => $this->title,
             'description' => $this->description,
-            'user_info' => [
-                'id' => $this->user ? $this->user->id : 'not exist',
-                'name' => $this->user ? $this->user->name : 'not exist',
-                'email' => $this->user ? $this->user->email : 'not exist'
-            ]
+            // 'user_info' => [
+            //     'id' => $this->user ? $this->user->id : 'not exist',
+            //     'name' => $this->user ? $this->user->name : 'not exist',
+            //     'email' => $this->user ? $this->user->email : 'not exist'
+            // ]
+            'user_info' => new UserResource($this->user)
         ];
     }
 }
