@@ -14,12 +14,11 @@ class PostController extends Controller
     {
         //get the model objects of Post
         $posts =  Post::all();
-       
+
         //use the transfromation layer
-        $postResource = PostResource::collection($posts); 
+        $postResource = PostResource::collection($posts);
        
         //return the result of transformation layer
         return $postResource;
     }
-    
 }
