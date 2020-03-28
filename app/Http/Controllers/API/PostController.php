@@ -12,13 +12,8 @@ class PostController extends Controller
 {
     public function index()
     {
-        //get the model objects of Post
-        $posts =  Post::all();
-
-        //use the transfromation layer
-        $postResource = PostResource::collection($posts);
-       
-        //return the result of transformation layer
-        return $postResource;
+        return PostResource::collection(
+            Post::all()
+        );
     }
 }
